@@ -4,7 +4,7 @@ rem Merge working branch to -ok branch
 rem Change branch1, branch2 and msg and execute
 
 set branch1=master
-set branch2=master
+set branch2=main
 set msg="#4 - Creating a Flutter App in Android Studio"
 
 echo Merging %branch1% to %branch2%
