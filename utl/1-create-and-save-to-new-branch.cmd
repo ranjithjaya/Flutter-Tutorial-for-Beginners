@@ -2,7 +2,7 @@ echo off
 
 rem create a branch from working branch
 rem Change branch1, branch2 and msg and execute
-rem To execute: .\utl\create-and-save-to-new-branch
+rem To execute: .\utl\1-create-and-save-to-new-branch
 
 set branch1=master
 set branch2=lesson-4

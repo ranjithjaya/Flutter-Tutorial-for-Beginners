@@ -2,7 +2,7 @@ echo off
 
 echo Push local rpo to remote rpo
 rem Change branch1, branch2 and msg and execute
-rem To execute: .\utl\push-local-rpo-to-remote-rpo
+rem To execute: .\utl\2-push-local-rpo-to-remote-rpo
 
 set branch1=lesson-4
 set branch2=lesson-4
