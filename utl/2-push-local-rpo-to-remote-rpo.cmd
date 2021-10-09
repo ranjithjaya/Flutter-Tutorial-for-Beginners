@@ -5,8 +5,8 @@ rem Change branch1, branch2 and msg and execute
 rem To execute: .\utl\2-push-local-rpo-to-remote-rpo
 
 rem set branch1=
-set branch2=lesson-5
-set msg="#5 - Scaffold & AppBar Widgets"
+set branch2=lesson-6
+set msg="#6 - Colours & Fonts"
 
 echo pushing %branch2% to remote rpo
 git checkout %branch2% 

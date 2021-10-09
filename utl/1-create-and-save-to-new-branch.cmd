@@ -5,8 +5,8 @@ rem Change branch1, branch2 and msg and execute
 rem To execute: .\utl\1-create-and-save-to-new-branch
 
 set branch1=master
-set branch2=lesson-5
-set msg="#5 - Scaffold & AppBar Widgets"
+set branch2=lesson-6
+set msg="#6 - Colours & Fonts"
 
 echo creating %branch2% from %branch1%
 rem cd C:\Users\Ranjithj\OneDrive\Documents\Mix-Progaming\academind\django-practical-guide-course-code\django_course_env_ver-06\meetups
