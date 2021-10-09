@@ -14,8 +14,9 @@ git add .
 git commit -m %msg%
 git remote remove origin
 git remote add origin https://github.com/ranjithjaya/Ninja-Flutter-Tutorial-for-Beginners.git
-rem git branch -M main
+git branch -M %branch2%
 git push -u origin %branch2%
+git branch -M %branch1%
 
 git branch -a
 goto :end
