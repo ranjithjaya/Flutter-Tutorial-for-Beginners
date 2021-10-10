@@ -4,8 +4,8 @@ echo Push local master to remote rpo
 rem Change branch1, branch2 and msg and execute
 rem To execute: .\utl\3-push-local-master-to-remote-rpo
 
-rem set branch1=master
-set branch2=lesson-5
+set branch1=master
+set branch2=lesson-5a
 set msg="#5 - Scaffold & AppBar Widgets"
 
 echo pushing %branch2% to remote rpo
@@ -16,6 +16,7 @@ git remote remove origin
 git remote add origin https://github.com/ranjithjaya/Ninja-Flutter-Tutorial-for-Beginners.git
 git branch -M %branch2%
 git push -u origin %branch2%
+pause
 git branch -M %branch1%
 
 git branch -a
