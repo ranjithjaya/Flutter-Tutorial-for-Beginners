@@ -96,3 +96,31 @@ fonts:
   - replace home: with home: Home(),
   - save and see Flutter will automatically run Hot reload
   - notice that this Home widget can be used anywhere
+  
+## #8 - Images & Assets
+[Tutorial url](https://www.youtube.com/watch?v=Hxh6nNHSUjo&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=8)
+### Add network image to body:
+- delete content of body:/Center(child:    with 
+````Flutter
+    body: Center(
+    child: Image(
+      image: NetworkImage('https://lh3.googleusercontent.com/proxy/iPgxq0SX00HSYOK339Fn8j4PXvJk6xaq7SK_vvZkivho8hOSXP_qv4E5NHtOB6YbuRKxFVaoOF2_UYMmpoQBDb55oLb9BTeloGJ16hpYcnAx'),
+    )),
+````
+### Add AssetImage image to body:
+- add followings to assets/pubspec.yaml
+````Flutter
+assets:
+  # - assets/nature-1.jpg
+  # - assets/nature-2.jpg
+  # - assets/nature-3.jpg
+  - assets/
+````
+- delete content of body:/Center(child:    with
+````Flutter
+    body: Center(
+    child: Image(
+      // image: AssetImage('assets/nature-1.jpg'),
+      image: AssetImage('nature-1.jpg'),
+    )),
+````
