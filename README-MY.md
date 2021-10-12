@@ -39,3 +39,49 @@
 - git branch -a
 - git remote -v
 - git push -u origin lesson-5
+
+## #6 - Colours & Fonts
+home: Scaffold(. .  is default style, alll in blue color which we want to customize now
+### add background color to Appbar
+- home:/Appbar:/Title:
+    - Type backgroundColor: Colors. 
+    - select 'red' from drop down menu 
+    - press Cntrl+Q to select strenth with []
+    - and finaly look like
+        - backgroundColor: Colors.red[600],
+### add background color to floatingActionButton
+- floatingActionButton:/child:
+    - backgroundColor: Colors.red[600],
+### add properties to body:
+- body:/Center(child:/Text(
+````Flutter
+  body: Center(
+  child: Text(
+  'hello, ninjas!',
+  style: TextStyle(
+  fontSize: 20.0,
+  fontWeight: FontWeight.bold,
+  letterSpacing: 2.0,
+  color: Colors.grey[600],
+````
+### add custom fonts family
+- go to google fonts
+  - search for 'indie flower' and download it
+  - now create a folder name 'fonts'
+  - extract the downloaded zip and copy 'IndieFlower-Regular.ttf' to fonts folder
+- add this fonts to src
+  - open file 'pubspec.yaml'
+    - select comented fonts: block
+    - pres Ctrl+Widows+/ to uncomment it
+    - edit as follows
+    - Warning: each tab indented with 2 blanks
+
+````Flutter
+fonts:
+  = family: indieFlower                     
+    fonts:
+      = asset: fonts/indieFlower-Regular.ttf
+````    
+- save it and add this to main.dart
+    - fontFamily: 'indieFlower',
+ 
