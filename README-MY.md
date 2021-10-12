@@ -84,4 +84,15 @@ fonts:
 ````    
 - save it and add this to main.dart
     - fontFamily: 'indieFlower',
- 
+  
+## #7 - Stateless Widgets & Hot Reload 
+[Tutorial url](https://www.youtube.com/watch?v=zwPBMg3SHVU&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=7)
+### Say Flutter to do Hot reload
+- Create Statelesswijet
+  - go to bottom in main.dart 
+  - type 'stless' and press tab. . this will create required snippet
+  - rename the wijet name to 'Home'
+  - now cut and paste all of the code in home: Scaffold() to here
+  - replace home: with home: Home(),
+  - save and see Flutter will automatically run Hot reload
+  - notice that this Home widget can be used anywhere
