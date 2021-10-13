@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
-  home: Home(),
-));
+      home: Home(),
+    ));
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -10,28 +10,27 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    appBar: AppBar(
-    title: Text('my first app'),
-    centerTitle: true,
-    backgroundColor: Colors.red[600],
-    ),
+      appBar: AppBar(
+        title: Text('my first app'),
+        centerTitle: true,
+        backgroundColor: Colors.red[600],
+      ),
+      body: Center(
+          child: IconButton(
+        onPressed: () {
+          print('you clicked me');
+        },
+        icon: Icon(Icons.alternate_email),
+        color: Colors.amber,
+      )),
 
-    body: Center(
-    child: Image(
-      // Fisst method:
-      // image: AssetImage('assets/nature-1.jpg'),
-      // 2nd method:
-       image: AssetImage('nature-1.jpg'),
-      // 3rd method:   //Not working
-      // image: Image.asset('nature-1.jpg'),
-    )),
-    floatingActionButton: FloatingActionButton(
-    onPressed: () {
-    print('you clicked me');
-    },
-    child: Text('click'),
-    backgroundColor: Colors.red[600],
-    ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print('you clicked me');
+        },
+        child: Text('click'),
+        backgroundColor: Colors.red[600],
+      ),
     );
   }
 }

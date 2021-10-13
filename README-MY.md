@@ -87,7 +87,11 @@ fonts:
   
 ## #7 - Stateless Widgets & Hot Reload 
 [Tutorial url](https://www.youtube.com/watch?v=zwPBMg3SHVU&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=7)
-### Say Flutter to do Hot reload
+Hey gang, in this Flutter tutorial I'll talk about what 
+stateless widgets are and how we can begin to make our 
+code more modular by using them. We'll also see how they 
+help us with a feature called hot reload, to help speed up 
+development.### Say Flutter to do Hot reload
 - Create Statelesswijet
   - go to bottom in main.dart 
   - type 'stless' and press tab. . this will create required snippet
@@ -99,6 +103,9 @@ fonts:
   
 ## #8 - Images & Assets
 [Tutorial url](https://www.youtube.com/watch?v=Hxh6nNHSUjo&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=8)
+Hey ninjas, in this Flutter tutorial I'll show you how to 
+work with images. I'll show you two types of Image widget 
+- the network image widget and the asset image widget.
 ### Add network image to body:
 - delete content of body:/Center(child:    with 
 ````Flutter
@@ -123,4 +130,55 @@ assets:
       // image: AssetImage('assets/nature-1.jpg'),
       image: AssetImage('nature-1.jpg'),
     )),
+````
+
+## #9 - Buttons & Icons
+[Tutorial url](https://www.youtube.com/watch?v=ABmqtI7ec7E&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=9)
+Hey gang, in this Flutter tutorial we'll see how to use both 
+the Icon and the various Button widgets (flat & raised), 
+as well as how both can work together to create icons 
+inside buttons.
+### add Icon() widget
+````Flutter
+- clear body: and add as follows
+  body: Center(
+    child: Icon(
+      Icons.airport_shuttle
+      color: Colors.lightBlue,
+      size: 50.0,
+    ),
+  ),
+````
+### add RaisedButton() or FlattButton() widget
+````Flutter
+- clear body: and add as follows
+      body: Center(
+        child: RaisedButton(
+        onPressed: () {},
+        child: Text('click me. . '),
+        color: Colors.lightBlue,
+      )),
+````
+### add RaisedButton() with icon widget
+````Flutter
+- clear body: and add as follows
+      body: Center(
+          child: RaisedButton.icon(
+        onPressed: () {},
+        icon: Icon(Icons.mail),
+        label: Text('mail me'),
+        color: Colors.amber,
+      ))
+````
+### add IconButton() with onClick event
+````Flutter
+- clear body: and add as follows
+      body: Center(
+          child: IconButton(
+        onPressed: () {
+          print('you clicked me');
+        },
+        icon: Icon(Icons.alternate_email),
+        color: Colors.amber,
+      )),
 ````
