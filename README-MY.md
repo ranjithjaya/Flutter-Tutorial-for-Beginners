@@ -182,3 +182,28 @@ inside buttons.
         color: Colors.amber,
       )),
 ````
+
+## #10 - Containers & Padding
+[Tutorial url](https://www.youtube.com/watch?v=H0cJ0gUlgE8&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=11)
+Hey ninjas, in this Flutter tutorial I'll explain how we can add 
+padding, margin & background colours to sections of the app 
+using wither the Container or Padding widget.
+### add Container() widget
+````Dart
+- clear body: and add as follows
+body: Container(
+/* padding is inside the container and margin is outside the container */
+//padding: EdgeInsets.all(20.0),
+//padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10),
+
+//padding: EdgeInsets.fromLTRB(left, top, right, bottom)
+padding: EdgeInsets.fromLTRB(10.0, 20.0, 30.0, 40.0),
+
+/* exctly the same for the margin */
+margin: EdgeInsets.all(30.0),
+
+color: Colors.grey[400],
+child: Text('hello'),
+
+),
+````

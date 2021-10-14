@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
@@ -15,14 +16,22 @@ class Home extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.red[600],
       ),
-      body: Center(
-          child: IconButton(
-        onPressed: () {
-          print('you clicked me');
-        },
-        icon: Icon(Icons.alternate_email),
-        color: Colors.amber,
-      )),
+
+      body: Container(
+        /* padding is inside the container and margin is outside the container */
+        //padding: EdgeInsets.all(20.0),
+        //padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10),
+
+        //padding: EdgeInsets.fromLTRB(left, top, right, bottom)
+        padding: EdgeInsets.fromLTRB(10.0, 20.0, 30.0, 40.0),
+
+        /* exctly the same for the margin */
+        margin: EdgeInsets.all(30.0),
+
+        color: Colors.grey[400],
+        child: Text('hello'),
+
+      ),
 
       floatingActionButton: FloatingActionButton(
         onPressed: () {
