@@ -16,23 +16,29 @@ class Home extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.red[600],
       ),
+      body: Row(
+        //mainAxisAlignment: MainAxisAlignment.center,
+        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        // mainAxisAlignment: MainAxisAlignment.end
 
-      body: Container(
-        /* padding is inside the container and margin is outside the container */
-        //padding: EdgeInsets.all(20.0),
-        //padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10),
-
-        //padding: EdgeInsets.fromLTRB(left, top, right, bottom)
-        padding: EdgeInsets.fromLTRB(10.0, 20.0, 30.0, 40.0),
-
-        /* exctly the same for the margin */
-        margin: EdgeInsets.all(30.0),
-
-        color: Colors.grey[400],
-        child: Text('hello'),
-
+        //crossAxisAlignment: CrossAxisAlignment.stretch,
+        //crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text('hello world'),
+          FlatButton(
+            onPressed: () {},
+            child: Text('click me. . '),
+            color: Colors.amber,
+          ),
+          Container(
+            color: Colors.cyan,
+            padding: EdgeInsets.all(30.0),
+            child: Text('inside container. . '),
+          ),
+        ],
       ),
-
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           print('you clicked me');

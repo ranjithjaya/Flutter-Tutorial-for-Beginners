@@ -54,7 +54,7 @@ home: Scaffold(. .  is default style, alll in blue color which we want to custom
     - backgroundColor: Colors.red[600],
 ### add properties to body:
 - body:/Center(child:/Text(
-````Flutter
+````Dart
   body: Center(
   child: Text(
   'hello, ninjas!',
@@ -76,7 +76,7 @@ home: Scaffold(. .  is default style, alll in blue color which we want to custom
     - edit as follows
     - Warning: each tab indented with 2 blanks
 
-````Flutter
+````Yaml
 fonts:
   = family: indieFlower                     
     fonts:
@@ -87,6 +87,7 @@ fonts:
   
 ## #7 - Stateless Widgets & Hot Reload 
 [Tutorial url](https://www.youtube.com/watch?v=zwPBMg3SHVU&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=7)
+
 Hey gang, in this Flutter tutorial I'll talk about what 
 stateless widgets are and how we can begin to make our 
 code more modular by using them. We'll also see how they 
@@ -103,12 +104,13 @@ development.### Say Flutter to do Hot reload
   
 ## #8 - Images & Assets
 [Tutorial url](https://www.youtube.com/watch?v=Hxh6nNHSUjo&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=8)
+
 Hey ninjas, in this Flutter tutorial I'll show you how to 
 work with images. I'll show you two types of Image widget 
 - the network image widget and the asset image widget.
 ### Add network image to body:
 - delete content of body:/Center(child:    with 
-````Flutter
+````Dart
     body: Center(
     child: Image(
       image: NetworkImage('https://lh3.googleusercontent.com/proxy/iPgxq0SX00HSYOK339Fn8j4PXvJk6xaq7SK_vvZkivho8hOSXP_qv4E5NHtOB6YbuRKxFVaoOF2_UYMmpoQBDb55oLb9BTeloGJ16hpYcnAx'),
@@ -116,7 +118,7 @@ work with images. I'll show you two types of Image widget
 ````
 ### Add AssetImage image to body:
 - add followings to assets/pubspec.yaml
-````Flutter
+````Dart
 assets:
   # - assets/nature-1.jpg
   # - assets/nature-2.jpg
@@ -124,7 +126,7 @@ assets:
   - assets/
 ````
 - delete content of body:/Center(child:    with
-````Flutter
+````Dart
     body: Center(
     child: Image(
       // image: AssetImage('assets/nature-1.jpg'),
@@ -134,12 +136,13 @@ assets:
 
 ## #9 - Buttons & Icons
 [Tutorial url](https://www.youtube.com/watch?v=ABmqtI7ec7E&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=9)
+
 Hey gang, in this Flutter tutorial we'll see how to use both 
 the Icon and the various Button widgets (flat & raised), 
 as well as how both can work together to create icons 
 inside buttons.
 ### add Icon() widget
-````Flutter
+````Dart
 - clear body: and add as follows
   body: Center(
     child: Icon(
@@ -150,7 +153,7 @@ inside buttons.
   ),
 ````
 ### add RaisedButton() or FlattButton() widget
-````Flutter
+````Dart
 - clear body: and add as follows
       body: Center(
         child: RaisedButton(
@@ -160,7 +163,7 @@ inside buttons.
       )),
 ````
 ### add RaisedButton() with icon widget
-````Flutter
+````Dart
 - clear body: and add as follows
       body: Center(
           child: RaisedButton.icon(
@@ -171,7 +174,7 @@ inside buttons.
       ))
 ````
 ### add IconButton() with onClick event
-````Flutter
+````Dart
 - clear body: and add as follows
       body: Center(
           child: IconButton(
@@ -185,6 +188,7 @@ inside buttons.
 
 ## #10 - Containers & Padding
 [Tutorial url](https://www.youtube.com/watch?v=H0cJ0gUlgE8&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=11)
+
 Hey ninjas, in this Flutter tutorial I'll explain how we can add 
 padding, margin & background colours to sections of the app 
 using wither the Container or Padding widget.
@@ -205,5 +209,40 @@ margin: EdgeInsets.all(30.0),
 color: Colors.grey[400],
 child: Text('hello'),
 
+),
+````
+
+## #11 - Rows
+[Tutorial url](https://www.youtube.com/watch?v=a6oKFvGuTH4&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=11)
+
+Hey gang, in this Flutter tutorial I'll explain we can start to 
+put more than 1 widget on a page by using rows (the Row widget!). ### add Container() widget
+### add Row widget
+this widget has collection of child widget called children widget
+- clear body: and add as follows
+
+````Dart
+      body: Row(
+        //mainAxisAlignment: MainAxisAlignment.center,
+        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        // mainAxisAlignment: MainAxisAlignment.end
+
+        //crossAxisAlignment: CrossAxisAlignment.stretch,
+        //crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text('hello world'),
+          FlatButton(
+            onPressed: () {},
+            child: Text('click me. . '),
+            color: Colors.amber,
+          ),
+          Container(
+            color: Colors.cyan,
+            padding: EdgeInsets.all(30.0),
+            child: Text('inside container. . '),
+          ),
+        ],
 ),
 ````
