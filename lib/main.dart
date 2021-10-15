@@ -16,25 +16,11 @@ class Home extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.red[600],
       ),
-      body: Column(
-        //mainAxisAlignment: MainAxisAlignment.center,
-        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        mainAxisAlignment: MainAxisAlignment.end,
 
-        //crossAxisAlignment: CrossAxisAlignment.stretch,
-        //crossAxisAlignment: CrossAxisAlignment.center,
-        //crossAxisAlignment: CrossAxisAlignment.start,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
-          /*
-          Text('hello world'),
-          FlatButton(
-            onPressed: () {},
-            child: Text('click me. . '),
-            color: Colors.amber,
-          ),
-        */
           Row(
             children: <Widget>[
               Text('hello'),
@@ -59,6 +45,7 @@ class Home extends StatelessWidget {
           ),
         ],
       ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           print('you clicked me');

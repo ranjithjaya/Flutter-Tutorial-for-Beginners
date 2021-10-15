@@ -246,3 +246,40 @@ this widget has collection of child widget called children widget
         ],
 ),
 ````
+
+## #12 - Columns
+[Tutorial url](https://www.youtube.com/watch?v=siFU8c_Heu0&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=12)
+### add Column widget
+this widget has collection of child widget called children widget
+- clear body: and add as follows
+
+````Dart
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Text('hello'),
+              Text(' world'),
+            ],
+          ),
+
+          Container(
+            color: Colors.cyan,
+            padding: EdgeInsets.all(20.0),
+            child: Text('one. . '),
+          ),
+          Container(
+            color: Colors.pinkAccent,
+            padding: EdgeInsets.all(30.0),
+            child: Text('two. . '),
+          ),
+          Container(
+            color: Colors.amber,
+            padding: EdgeInsets.all(40.0),
+            child: Text('three. . '),
+          ),
+        ],
+      ),
+````
