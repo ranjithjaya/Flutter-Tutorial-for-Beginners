@@ -292,4 +292,33 @@ Hey all, in this Flutter tutorial I'll explain what the Expanded widget is and h
 - clear body: and add as follows
 
 ````Dart
+      body: Row(
+        children: <Widget>[
+          Expanded(child: Image.asset('nature-1.jpg')),
+          Expanded(
+            flex: 3,
+            child: Container(
+              color: Colors.cyan,
+              padding: EdgeInsets.all(30.0),
+              child: Text('1'),
+            ),
+          ),
+          Expanded(
+            flex: 2,
+            child: Container(
+              color: Colors.pinkAccent,
+              padding: EdgeInsets.all(30.0),
+              child: Text('2'),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              color: Colors.amber,
+              padding: EdgeInsets.all(30.0),
+              child: Text('3'),
+            ),
+          ),
+        ],
+      ),
 ````
