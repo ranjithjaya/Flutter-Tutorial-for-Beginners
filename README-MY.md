@@ -283,3 +283,13 @@ this widget has collection of child widget called children widget
         ],
       ),
 ````
+
+## #14 - Expanded Widgets
+[Tutorial url](https://www.youtube.com/watch?v=zNZvuP8h1vs&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=14)
+
+Hey all, in this Flutter tutorial I'll explain what the Expanded widget is and how we can use it to control our layouts in conjunction with the flex property.
+- flex allocate space in row width with ratio3:2:1 => 3/6 2/6 1/6
+- clear body: and add as follows
+
+````Dart
+````
