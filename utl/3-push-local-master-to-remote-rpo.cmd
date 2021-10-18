@@ -5,8 +5,8 @@ rem Change branch1, branch2 and msg and execute
 rem To execute: .\utl\3-push-local-master-to-remote-rpo
 
 set branch1=master
-set branch2=lesson-15
-set msg="#15 - Ninja ID Project"
+set branch2=lesson-16
+set msg="#16 - Stateful Widgets"
 
 echo pushing %branch2% to remote rpo
 git checkout %branch1%
