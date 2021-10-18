@@ -244,3 +244,10 @@ class _NinjaCardState extends State<NinjaCard> {
 }
 
 ````
+
+## #17 - Lists of Data
+[Tutorial url](https://www.youtube.com/watch?v=_AC90CiDoKA&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=17)
+
+Hey all, in this Flutter tutorial I'll show you how we can cycle through lists of data and output that data in our widget tree using the map method.
+````Drat
+````
