@@ -1,12 +1,13 @@
 echo off
+rem ************** PARAMETERS BEGIN ********************
+set branch1=master
+set branch2=lesson-19
+set msg="#18 - Custom Classes"
+rem To execute: .\utl\3-push-local-master-to-remote-rpo
+rem ************** PARAMETERS END ********************
 
 echo Push local master to remote rpo
 rem Change branch1, branch2 and msg and execute
-rem To execute: .\utl\3-push-local-master-to-remote-rpo
-
-set branch1=master
-set branch2=lesson-17
-set msg="#17 - Lists of Data"
 
 echo pushing %branch2% to remote rpo
 git checkout %branch1%
