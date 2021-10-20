@@ -1,47 +1,7 @@
-/* #21 - Functions as Parameters */
-import 'package:flutter/cupertino.dart';
+/* #22 - Starting the World Time App */
 import 'package:flutter/material.dart';
-import 'quote.dart';
-import 'quote_card.dart';
+import 'pages/home.dart';
 
 void main() => runApp(MaterialApp(
-      home: QuoteList(),
+      home: Home(),
     ));
-
-class QuoteList extends StatefulWidget {
-
-  @override
-  _QuoteListState createState() => _QuoteListState();
-}
-
-class _QuoteListState extends State<QuoteList> {
-  List<Quote> quotes = [
-    Quote(author: 'Oscar Wilde', text: 'aaaaaaaaaaaaaaaaaaaaaaaaaa'),
-    Quote(author: 'Oscar Wilde', text: 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbb'),
-    Quote(author: 'Oscar Wilde', text: 'ccccccccccccccccccccccccc')
-  ];
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.grey[200],
-        appBar: AppBar(
-          title: Text('Awesome Quotes'),
-          centerTitle: true,
-          backgroundColor: Colors.redAccent,
-        ),
-        body: Column(
-            children: quotes.map((quote) => QuoteCard(
-                quote: quote,
-              delete: () {
-                  setState(() {
-                    quotes.remove(quote);
-                  });
-
-              }
-            )).toList(),
-        )
-    );
-  }
-}

@@ -608,3 +608,84 @@ class QuoteCard extends StatelessWidget {
   }
 }
 ````
+
+## #22 - Starting the World Time App
+[Tutorial url](https://www.youtube.com/watch?v=WghpP9W2vXo&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=22)
+
+Hey gang, in this Flutter tutorial we'll start our final, bigger project - the World Time app. 
+
+- main.dart
+````Drat
+/* #22 - Starting the World Time App */
+import 'package:flutter/material.dart';
+import 'pages/home.dart';
+
+void main() => runApp(MaterialApp(
+      home: Home(),
+    ));
+````
+- pages/home.dart
+````Drat
+/* #22 - Starting the World Time App */
+import 'package:flutter/material.dart';
+
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(child: Text('home screen')),
+    );
+  }
+}
+````
+
+- pages/choose_location.dart
+````Drat
+/* #22 - Starting the World Time App */
+import 'package:flutter/material.dart';
+
+class ChooseLocation extends StatefulWidget {
+  const ChooseLocation({Key? key}) : super(key: key);
+
+  @override
+  _ChooseLocationState createState() => _ChooseLocationState();
+}
+
+class _ChooseLocationState extends State<ChooseLocation> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Text('choose location screen'),
+
+    );
+  }
+}
+````
+
+- pages/loading.dart
+````Drat
+/* #22 - Starting the World Time App */
+import 'package:flutter/material.dart';
+
+class Loading extends StatefulWidget {
+  const Loading({Key? key}) : super(key: key);
+
+  @override
+  _LoadingState createState() => _LoadingState();
+}
+
+class _LoadingState extends State<Loading> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Text('loading screen')
+    );
+  }
+}
+````
