@@ -502,3 +502,109 @@ class QuoteCard extends StatelessWidget {
   }
 }
 ````
+
+## #21 - Functions as Parameters
+[Tutorial url](https://www.youtube.com/watch?v=aqePcMyeoIY&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=21)
+
+Hey gang, in this Flutter tutorial I'll show you how we can update the state of our 'parent' widget by passing a function into a nested 'child' widget.
+````Drat
+/* #21 - Functions as Parameters */
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'quote.dart';
+import 'quote_card.dart';
+
+void main() => runApp(MaterialApp(
+      home: QuoteList(),
+    ));
+
+class QuoteList extends StatefulWidget {
+
+  @override
+  _QuoteListState createState() => _QuoteListState();
+}
+
+class _QuoteListState extends State<QuoteList> {
+  List<Quote> quotes = [
+    Quote(author: 'Oscar Wilde', text: 'aaaaaaaaaaaaaaaaaaaaaaaaaa'),
+    Quote(author: 'Oscar Wilde', text: 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbb'),
+    Quote(author: 'Oscar Wilde', text: 'ccccccccccccccccccccccccc')
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Colors.grey[200],
+        appBar: AppBar(
+          title: Text('Awesome Quotes'),
+          centerTitle: true,
+          backgroundColor: Colors.redAccent,
+        ),
+        body: Column(
+            children: quotes.map((quote) => QuoteCard(
+                quote: quote,
+              delete: () {
+                  setState(() {
+                    quotes.remove(quote);
+                  });
+
+              }
+            )).toList(),
+        )
+    );
+  }
+}
+````
+
+- quote_card.dart
+````Drat
+/* #21 - Functions as Parameters */
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'quote.dart';
+class QuoteCard extends StatelessWidget {
+  final Quote quote;
+  /*
+  final Function  delete;
+  - Function does not work
+  - Replace Function with VoidCallback
+  */
+  final VoidCallback  delete;
+  QuoteCard({ required this.quote,  required this.delete });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Text(quote.text,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Colors.grey[600],
+                )),
+            SizedBox(height: 6.0),
+            Text(quote.author,
+                style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.grey[800],
+                )
+            ),
+            SizedBox(height: 8.0),
+            FlatButton.icon(
+                onPressed: delete,
+                label: Text('delete quote'),
+                icon: Icon(Icons.delete)
+            )
+
+          ],
+        ),
+      ),
+    );
+  }
+}
+````

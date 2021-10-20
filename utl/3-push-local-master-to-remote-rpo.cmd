@@ -1,8 +1,8 @@
 echo off
 rem ************** PARAMETERS BEGIN ********************
 set branch1=master
-set branch2=lesson-20
-set msg="#20 - Extracting Widgets"
+set branch2=lesson-21
+set msg="#21 - Functions as Parameters"
 rem To execute: .\utl\3-push-local-master-to-remote-rpo
 rem ************** PARAMETERS END ********************
 

@@ -1,10 +1,17 @@
-// #20 - Extracting Widgets
+/* #21 - Functions as Parameters */
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'quote.dart';
 class QuoteCard extends StatelessWidget {
   final Quote quote;
-  QuoteCard({ required this.quote });
+  /*
+  final Function  delete;
+  - Function does not work
+  - Replace Function with VoidCallback
+  */
+  final VoidCallback  delete;
+  QuoteCard({ required this.quote,  required this.delete });
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +32,15 @@ class QuoteCard extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14.0,
                   color: Colors.grey[800],
-                )),
-            SizedBox(height: 6.0),
+                )
+            ),
+            SizedBox(height: 8.0),
+            FlatButton.icon(
+                onPressed: delete,
+                label: Text('delete quote'),
+                icon: Icon(Icons.delete)
+            )
+
           ],
         ),
       ),
