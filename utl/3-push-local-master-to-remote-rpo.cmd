@@ -1,8 +1,8 @@
 echo off
 rem ************** PARAMETERS BEGIN ********************
 set branch1=master
-set branch2=lesson-22
-set msg="#22 - Starting the World Time App"
+set branch2=lesson-23
+set msg="#23 - Maps & Routing"
 rem To execute: .\utl\3-push-local-master-to-remote-rpo
 rem ************** PARAMETERS END ********************
 

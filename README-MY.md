@@ -624,6 +624,7 @@ void main() => runApp(MaterialApp(
       home: Home(),
     ));
 ````
+
 - pages/home.dart
 ````Drat
 /* #22 - Starting the World Time App */
@@ -685,6 +686,130 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: Text('loading screen')
+    );
+  }
+}
+````
+
+## #23 - Maps & Routing
+[Tutorial url](https://www.youtube.com/watch?v=WG5tJIAq5b0&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=24)
+
+Hey gang, in this Flutter tutorial we'll talk a little bit about Maps in Dart and routing for your apps (when you have multiple screens to transition between).
+
+- main.dart
+````Drat
+/* #23 - Maps & Routing */
+
+import 'package:flutter/material.dart';
+import 'pages/home.dart';
+import 'pages/loading.dart';
+import 'pages/choose_location.dart';
+
+void main() => runApp(MaterialApp(
+  initialRoute: '/home',
+  routes: {
+    '/': (context) => Loading(),
+    '/home': (context) => Home(),
+    '/location': (context) => ChooseLocation(),
+  },
+    ));
+````
+
+- pages/home.dart
+````Drat
+``/* #23 - Maps & Routing */
+import 'dart:html';
+
+import 'package:flutter/material.dart';
+
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+          // child: Text('home screen')
+          child: Column(
+              children: <Widget>[
+                FlatButton.icon(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/location');
+                    },
+                    icon: Icon(Icons.edit_location),
+                    label: Text('Edit location'),
+                ),
+              ],
+          )
+      ),
+    );
+  }
+}
+``
+- pages/choose_location.dart
+````Drat
+`/* #23 - Maps & Routing */
+import 'package:flutter/material.dart';
+
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+          // child: Text('home screen')
+          child: Column(
+              children: <Widget>[
+                FlatButton.icon(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/location');
+                    },
+                    icon: Icon(Icons.edit_location),
+                    label: Text('Edit location'),
+                ),
+              ],
+          )
+      ),
+    );
+  }
+}
+```
+
+- pages/loading.dart
+````Drat
+/* #23 - Maps & Routing */
+import 'package:flutter/material.dart';
+
+class ChooseLocation extends StatefulWidget {
+  const ChooseLocation({Key? key}) : super(key: key);
+
+  @override
+  _ChooseLocationState createState() => _ChooseLocationState();
+}
+
+class _ChooseLocationState extends State<ChooseLocation> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        backgroundColor: Colors.blue[900],
+        title: Text('Choose a location'),
+        centerTitle: true,
+        elevation: 0,  // remove the block shadow
+      ),
+      body: Text('choose location screen'),
     );
   }
 }

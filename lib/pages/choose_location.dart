@@ -1,4 +1,4 @@
-/* #22 - Starting the World Time App */
+/* #23 - Maps & Routing */
 import 'package:flutter/material.dart';
 
 class ChooseLocation extends StatefulWidget {
@@ -12,8 +12,14 @@ class _ChooseLocationState extends State<ChooseLocation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        backgroundColor: Colors.blue[900],
+        title: Text('Choose a location'),
+        centerTitle: true,
+        elevation: 0,  // remove the block shadow
+      ),
       body: Text('choose location screen'),
-
     );
   }
 }
