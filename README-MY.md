@@ -3,6 +3,17 @@
 - Date: 20-Sep-2021
 ## Local setting
 - Folder: C:\MY-DATA\Mix-Progaming\Ninja\Flutter Tutorial for Beginners\ninja_id
+
+### Visual Studio 
+- Editor shortcuts
+- Show/Hide quick documentation on mouse move
+  - Setting/Editor/General/Code Editing/Quick Documentation
+    - check/uncheck Show quick documentation on mouse move
+  - Comment / Uncomment 
+    - line
+      - ctrl + /
+    - block
+      - ctrl + shift + /
 ### Git commands
 | command      | Description |
 | ----------- | ----------- |
@@ -810,6 +821,53 @@ class _ChooseLocationState extends State<ChooseLocation> {
         elevation: 0,  // remove the block shadow
       ),
       body: Text('choose location screen'),
+    );
+  }
+}
+````
+
+## #24 - Widget Lifecycle
+[Tutorial url](https://www.youtube.com/watch?v=pDzQGolJayE&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=26)
+
+- pages/choose_location.dart
+````Drat
+/* #24 - Widget Lifecycle */
+import 'package:flutter/material.dart';
+
+class ChooseLocation extends StatefulWidget {
+  const ChooseLocation({Key? key}) : super(key: key);
+
+  @override
+  _ChooseLocationState createState() => _ChooseLocationState();
+}
+
+class _ChooseLocationState extends State<ChooseLocation> {
+  int counter = 0;
+  @override
+  void initState() {
+    super.initState();
+    print('intstate function ran');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    print('build function ran');
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        backgroundColor: Colors.blue[900],
+        title: Text('Choose a location'),
+        centerTitle: true,
+        elevation: 0,  // remove the block shadow
+      ),
+      body: RaisedButton(
+        onPressed: () {
+          setState(() {
+            counter += 1;
+          });
+        },
+        child: Text('counter is $counter'),
+      ),
     );
   }
 }
