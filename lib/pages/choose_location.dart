@@ -1,4 +1,4 @@
-/* #24 - Widget Lifecycle */
+/* #25 - Asynchronous Code */
 import 'package:flutter/material.dart';
 
 class ChooseLocation extends StatefulWidget {
@@ -9,16 +9,30 @@ class ChooseLocation extends StatefulWidget {
 }
 
 class _ChooseLocationState extends State<ChooseLocation> {
-  int counter = 0;
+  void getData() async {
+    // similate network request for  username
+     String username = await Future.delayed(Duration(seconds: 3), () {
+      return 'yosi';
+    });
+
+    // similate network request to get bio of the username
+  String bio = await Future.delayed(Duration(seconds: 2), () {
+      return 'vegan, musician & egg collector';
+    });
+
+    print('$username - $bio');
+
+  } // end-getData()
+
   @override
   void initState() {
     super.initState();
-    print('intstate function ran');
+    getData();
+    print('Dosent wait for await function to compleate. . ');
   }
 
   @override
   Widget build(BuildContext context) {
-    print('build function ran');
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
@@ -30,10 +44,8 @@ class _ChooseLocationState extends State<ChooseLocation> {
       body: RaisedButton(
         onPressed: () {
           setState(() {
-            counter += 1;
           });
         },
-        child: Text('counter is $counter'),
       ),
     );
   }

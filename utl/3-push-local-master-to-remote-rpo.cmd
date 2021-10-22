@@ -1,8 +1,8 @@
 echo off
 rem ************** PARAMETERS BEGIN ********************
 set branch1=master
-set branch2=lesson-24
-set msg="#24 - Widget Lifecycle"
+set branch2=lesson-25
+set msg="#25 - Asynchronous Code"
 rem To execute: .\utl\3-push-local-master-to-remote-rpo
 rem ************** PARAMETERS END ********************
 
