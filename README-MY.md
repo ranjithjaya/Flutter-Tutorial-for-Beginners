@@ -939,6 +939,8 @@ class _ChooseLocationState extends State<ChooseLocation> {
 ## #26 - Flutter Packages (http)
 [Tutorial url](https://www.youtube.com/watch?v=WdXcJdhWcEY&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=27)
 
+Hey gang, in this Flutter tutorial I'll show you how we can add packages to our Flutter apps to provide additional functionality. In our case we'll be working with the 'http' package to collect data from a 3rd party API.
+
 - pubspec.yaml
 ````Yaml
 dependencies:
@@ -1034,6 +1036,70 @@ class _LoadingState extends State<Loading> {
   void initState() {
     super.initState();
     getData();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Text('loading screen')
+    );
+  }
+}
+````
+
+## #27 - World Time API
+[Tutorial url](https://www.youtube.com/watch?v=AqsmaT1U6sQ&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=27)
+
+Hey ninjas, in this Flutter tutorial we'll take a look at the API we'll be using to get our time data - the World Time API. 
+
+- go to website 'World Time API . .  Current time in Europe/London' 
+  - http://www.worldtimeapi.org/timezone/Europe/London
+  - click 'JSON'
+    - copy 'http://www.worldtimeapi.org/api/timezone/Europe/London'
+    - paste it in loading.dart as
+````Drat
+    void getTime() async {
+    // make the request
+    Response response = await get('http://www.worldtimeapi.org/api/timezone/Europe/London');
+    . . . 
+````
+
+- pages/loading.dart
+````Drat
+/* #27 - World Time API */
+import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'dart:convert';
+class Loading extends StatefulWidget {
+  const Loading({Key? key}) : super(key: key);
+
+  @override
+  _LoadingState createState() => _LoadingState();
+}
+
+class _LoadingState extends State<Loading> {
+
+  void getTime() async {
+    // make the request
+    Response response = await get('http://www.worldtimeapi.org/api/timezone/Europe/London');
+    Map data = jsonDecode(response.body);
+    // print(data);
+
+    // get properties from data
+    String datetime = data['datetime'];
+    String offset = data['utc_offset'].substring(1,3);
+    //print(datetime);
+    //print(offset);
+
+    // create DateTime object
+    DateTime now = DateTime.parse(datetime);
+    now = now.add(Duration(hours: int.parse(offset)));
+    print('Time in London: $now');
+  } // end-getTime()
+
+  @override
+  void initState() {
+    super.initState();
+    getTime();
   }
 
   @override
