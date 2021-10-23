@@ -6,14 +6,18 @@
 
 ### Visual Studio 
 - Editor shortcuts
-- Show/Hide quick documentation on mouse move
-  - Setting/Editor/General/Code Editing/Quick Documentation
-    - check/uncheck Show quick documentation on mouse move
-  - Comment / Uncomment 
+  - Show/Hide quick documentation on mouse move
+    - Setting/Editor/General/Code Editing/Quick Documentation
+      - check/uncheck Show quick documentation on mouse move
+- Comment / Uncomment 
     - line
       - ctrl + /
     - block
       - ctrl + shift + /
+- Unsound null safety
+  - main.drat / Edit configuration / Additional run args
+    - --no-sound-null-safety
+
 ### Git commands
 | command      | Description |
 | ----------- | ----------- |
@@ -927,6 +931,114 @@ class _ChooseLocationState extends State<ChooseLocation> {
           });
         },
       ),
+    );
+  }
+}
+````
+
+## #26 - Flutter Packages (http)
+[Tutorial url](https://www.youtube.com/watch?v=WdXcJdhWcEY&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=27)
+
+- pubspec.yaml
+````Yaml
+dependencies:
+  http: ^0.12.0+2
+````
+- go to website 'json place holder' site
+  - https://jsonplaceholder.typicode.com/
+  - go down 'Try it'
+    - copy 'https://jsonplaceholder.typicode.com/todos/1'
+    - paste it in loading.dart as
+      - get('https://jsonplaceholder.typicode.com/todos/1')
+
+
+- main.dart
+````Drat
+/* #26 - Flutter Packages (http) */
+
+import 'package:flutter/material.dart';
+import 'pages/home.dart';
+import 'pages/loading.dart';
+import 'pages/choose_location.dart';
+
+void main() => runApp(MaterialApp(
+  initialRoute: '/',
+  routes: {
+    '/': (context) => Loading(),
+    '/home': (context) => Home(),
+    '/location': (context) => ChooseLocation(),
+  },
+    ));
+````
+
+- pages/choose_location.dart
+````Drat
+/* #26 - Flutter Packages (http) */
+import 'package:flutter/material.dart';
+
+class ChooseLocation extends StatefulWidget {
+  const ChooseLocation({Key? key}) : super(key: key);
+
+  @override
+  _ChooseLocationState createState() => _ChooseLocationState();
+}
+
+class _ChooseLocationState extends State<ChooseLocation> {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        backgroundColor: Colors.blue[900],
+        title: Text('Choose a location'),
+        centerTitle: true,
+        elevation: 0,  // remove the block shadow
+      ),
+      body: RaisedButton(
+        onPressed: () {
+          setState(() {
+          });
+        },
+      ),
+    );
+  }
+}
+````
+
+- pages/loading.dart
+````Drat
+/* #26 - Flutter Packages (http) */
+import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'dart:convert';
+class Loading extends StatefulWidget {
+  const Loading({Key? key}) : super(key: key);
+
+  @override
+  _LoadingState createState() => _LoadingState();
+}
+
+class _LoadingState extends State<Loading> {
+
+  void getData() async {
+
+    Response response = await get('https://jsonplaceholder.typicode.com/todos/1');
+    Map data = jsonDecode(response.body);
+    print(data);
+    print(data['title']);
+  } // end-getData()
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Text('loading screen')
     );
   }
 }

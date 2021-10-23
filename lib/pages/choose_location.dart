@@ -1,4 +1,4 @@
-/* #25 - Asynchronous Code */
+/* #26 - Flutter Packages (http) */
 import 'package:flutter/material.dart';
 
 class ChooseLocation extends StatefulWidget {
@@ -9,27 +9,7 @@ class ChooseLocation extends StatefulWidget {
 }
 
 class _ChooseLocationState extends State<ChooseLocation> {
-  void getData() async {
-    // similate network request for  username
-     String username = await Future.delayed(Duration(seconds: 3), () {
-      return 'yosi';
-    });
 
-    // similate network request to get bio of the username
-  String bio = await Future.delayed(Duration(seconds: 2), () {
-      return 'vegan, musician & egg collector';
-    });
-
-    print('$username - $bio');
-
-  } // end-getData()
-
-  @override
-  void initState() {
-    super.initState();
-    getData();
-    print('Dosent wait for await function to compleate. . ');
-  }
 
   @override
   Widget build(BuildContext context) {

@@ -1,8 +1,8 @@
 echo off
 rem ************** PARAMETERS BEGIN ********************
 set branch1=master
-set branch2=lesson-25
-set msg="#25 - Asynchronous Code"
+set branch2=lesson-26
+set msg="#26 - Flutter Packages (http)"
 rem To execute: .\utl\3-push-local-master-to-remote-rpo
 rem ************** PARAMETERS END ********************
 
