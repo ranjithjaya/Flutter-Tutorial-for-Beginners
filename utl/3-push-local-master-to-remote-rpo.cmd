@@ -1,8 +1,8 @@
 echo off
 rem ************** PARAMETERS BEGIN ********************
 set branch1=master
-set branch2=lesson-27
-set msg="#27 - World Time API"
+set branch2=lesson-28
+set msg="#28 - WorldTime Custom Class"
 rem To execute: .\utl\3-push-local-master-to-remote-rpo
 rem ************** PARAMETERS END ********************
 
