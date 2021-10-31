@@ -1245,7 +1245,7 @@ String time = 'loading';
 
 - pages/world_time.dart
 ````Drat
-`/* #29 - Error Handling */
+/* #29 - Error Handling */
 import 'package:http/http.dart';
 import 'dart:convert';
 
@@ -1284,7 +1284,7 @@ class WorldTime {
     }
   } // end-getTime()
 } //End-of world_time {
-```
+````
 
 ## #30 - Passing Route Data
 [Tutorial url](https://www.youtube.com/watch?v=HemchBJQdgM&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=29)
@@ -1336,11 +1336,11 @@ class _LoadingState extends State<Loading> {
     );
   }
 }
-```
+````
 
 - pages/home.dart
 ````Drat
-`/* #30 - Passing Route Data */
+/* #30 - Passing Route Data */
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -1377,4 +1377,4 @@ class _HomeState extends State<Home> {
     );
   }
 }
-```
+````
