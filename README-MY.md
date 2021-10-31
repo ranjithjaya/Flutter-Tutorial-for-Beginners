@@ -1285,3 +1285,96 @@ class WorldTime {
   } // end-getTime()
 } //End-of world_time {
 ```
+
+## #30 - Passing Route Data
+[Tutorial url](https://www.youtube.com/watch?v=HemchBJQdgM&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=29)
+
+Hey gang, in this Flutter tutorial for Beginners, I'll explain how to handle errors from our API call.
+
+- pages/loading.dart
+````Drat
+`/* #30 - Passing Route Data */
+import 'package:flutter/material.dart';
+import 'dart:convert';
+import '../services/world_time.dart';
+
+class Loading extends StatefulWidget {
+  const Loading({Key? key}) : super(key: key);
+
+  @override
+  _LoadingState createState() => _LoadingState();
+}
+
+class _LoadingState extends State<Loading> {
+  void setupWorldTime() async {
+    WorldTime instence = WorldTime('Berlin', 'germany.png', 'Europe/London');
+    //WorldTime instence = WorldTime(location: 'Berlin', flag: 'germany.png', url: 'Europe/London');
+    await instence.getTime();
+    // redirecting. .
+    Navigator.pushReplacementNamed(context, '/home', arguments: {
+      'location': instence.location,
+      'flag': instence.flag,
+      'time': instence.time,
+    });
+
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setupWorldTime();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // return Scaffold(body: Text('loading screen')
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(50.0),
+        child: Text('loading. . '),
+      ),
+    );
+  }
+}
+```
+
+- pages/home.dart
+````Drat
+`/* #30 - Passing Route Data */
+import 'package:flutter/material.dart';
+
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  Map data = {};
+
+
+  @override
+  Widget build(BuildContext context) {
+    data = ModalRoute.of(context).settings.arguments;
+    print(data);
+
+    return Scaffold(
+      body: SafeArea(
+          // child: Text('home screen')
+          child: Column(
+              children: <Widget>[
+                FlatButton.icon(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/location');
+                    },
+                    icon: Icon(Icons.edit_location),
+                    label: Text('Edit location'),
+                ),
+              ],
+          )
+      ),
+    );
+  }
+}
+```
