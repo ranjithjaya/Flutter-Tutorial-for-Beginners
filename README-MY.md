@@ -1383,3 +1383,168 @@ class _HomeState extends State<Home> {
   }
 }
 ````
+
+## #31 - Formatting & Showing Dates
+[Tutorial url](https://www.youtube.com/watch?v=c7Ap0iLwv6k&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=31)
+
+Hey gang, in this Flutter tutorial I'll show you how we can quickly format our date and output it to the home screen.
+- pages/loading.dart
+````Drat
+/* #31 - Formatting & Showing Dates */
+import 'package:flutter/material.dart';
+import 'dart:convert';
+import '../services/world_time.dart';
+
+class Loading extends StatefulWidget {
+  const Loading({Key? key}) : super(key: key);
+
+  @override
+  _LoadingState createState() => _LoadingState();
+}
+
+class _LoadingState extends State<Loading> {
+  void setupWorldTime() async {
+    WorldTime instence = WorldTime('Berlin', 'germany.png', 'Europe/London');
+    //WorldTime instence = WorldTime(location: 'Berlin', flag: 'germany.png', url: 'Europe/London');
+    await instence.getTime();
+    // redirecting. .
+    Navigator.pushReplacementNamed(context, '/home', arguments: {
+      'location': instence.location,
+      'flag': instence.flag,
+      'time': instence.time,
+    });
+
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setupWorldTime();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // return Scaffold(body: Text('loading screen')
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(50.0),
+        child: Text('loading. . '),
+      ),
+    );
+  }
+}
+````
+
+- pages/home.dart
+````Drat
+/* #31 - Formatting & Showing Dates */
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class Home extends StatefulWidget {
+  //const Home({Key? key}) : super(key: key);
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  Map data = {};
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    data = ModalRoute.of(context)!.settings.arguments as Map;
+    print(data);
+
+    return Scaffold(
+        body: SafeArea(
+      child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 120.0, 0, 0),
+          //),
+          child: Column(
+            children: <Widget>[
+              FlatButton.icon(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/location');
+                },
+                icon: Icon(Icons.edit_location),
+                label: Text('Edit location'),
+              ),
+              SizedBox(height: 20.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    data['location'],
+                    style: TextStyle(
+                      fontSize: 28.0,
+                      letterSpacing: 2.0,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 20.0),
+              Text(
+                data['time'],
+                style: TextStyle(
+                  fontSize: 66.0,
+                  //letterSpacing: 2.0,
+                ),
+              ),
+
+            ],
+          )),
+    ));
+  }
+}
+````
+
+- pages/world_time.dart
+````Drat
+/* #31 - Formatting & Showing Dates */
+import 'package:http/http.dart';
+import 'dart:convert';
+import 'package:intl/intl.dart';
+
+class WorldTime {
+  String location = ""; // location name for the UI
+  String time = ""; // the time in that location
+  String flag = ""; // url to an asset flag icon
+  String url = ""; // location url for api endpoint
+
+  WorldTime(this.location, this.flag, this.url);
+
+  Future<void> getTime() async {
+    try {
+      // make the request
+      Response response =
+          await get('http://www.worldtimeapi.org/api/timezone/$url');
+      //Response response = await get('http://www.worldtimeapi.org/api/timezone/Asia/Kabul');
+      print('url : $url');
+      Map data = jsonDecode(response.body);
+      // print(data);
+
+      // get properties from data
+      String datetime = data['datetime'];
+      String offset = data['utc_offset'].substring(1, 3);
+      //print(datetime);
+      //print(offset);
+
+      // create DateTime object
+      DateTime now = DateTime.parse(datetime);
+      now = now.add(Duration(hours: int.parse(offset)));
+      // set the time property
+      //time = now.toString();
+      time = DateFormat.jm().format(now);
+    } catch (e) {
+      print('caught error: $e');
+      time = 'could not get the time data . . ';
+    }
+  } // end-getTime()
+} //End-of world_time {
+````

@@ -1,6 +1,7 @@
-/* #29 - Error Handling */
+/* #31 - Formatting & Showing Dates */
 import 'package:http/http.dart';
 import 'dart:convert';
+import 'package:intl/intl.dart';
 
 class WorldTime {
   String location = ""; // location name for the UI
@@ -30,7 +31,8 @@ class WorldTime {
       DateTime now = DateTime.parse(datetime);
       now = now.add(Duration(hours: int.parse(offset)));
       // set the time property
-      time = now.toString();
+      //time = now.toString();
+      time = DateFormat.jm().format(now);
     } catch (e) {
       print('caught error: $e');
       time = 'could not get the time data . . ';
