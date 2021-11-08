@@ -1548,3 +1548,275 @@ class WorldTime {
   } // end-getTime()
 } //End-of world_time {
 ````
+
+## #32 - Loaders / Spinners
+[Tutorial url](https://www.youtube.com/watch?v=nLlVANBmFJM&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ&index=32)
+
+Hey gang, in this Flutter tutorial we'll take a look at how to create a spinner to show on the UI while the content is loading. For this we'll use a package called Flutter Spinkit - https://pub.dev/packages/flutter_spinkit
+- pages/loading.dart
+````Drat
+/* #32 - Loaders / Spinners */
+import 'package:flutter/material.dart';
+import 'dart:convert';
+import '../services/world_time.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+class Loading extends StatefulWidget {
+  const Loading({Key? key}) : super(key: key);
+
+  @override
+  _LoadingState createState() => _LoadingState();
+}
+
+class _LoadingState extends State<Loading> {
+  void setupWorldTime() async {
+    WorldTime instence = WorldTime('Berlin', 'germany.png', 'Europe/London');
+    //WorldTime instence = WorldTime(location: 'Berlin', flag: 'germany.png', url: 'Europe/London');
+    await instence.getTime();
+    // redirecting. .
+    Navigator.pushReplacementNamed(context, '/home', arguments: {
+      'location': instence.location,
+      'flag': instence.flag,
+      'time': instence.time,
+    });
+
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setupWorldTime();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // return Scaffold(body: Text('loading screen')
+
+    return Scaffold(
+/*
+      body: Padding(
+        padding: EdgeInsets.all(50.0),
+        child: Text('loading. . '),
+      ),
+*/
+    backgroundColor: Colors.blue[900],
+    body: Center(
+        child: SpinKitFadingCube(
+          color: Colors.white,
+          size: 50.0,
+        )
+
+    ),
+    );
+  }
+}
+````
+- pages/home.dart
+````Drat
+````
+/* #32 - Loaders / Spinners */
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class Home extends StatefulWidget {
+  //const Home({Key? key}) : super(key: key);
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  Map data = {};
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    data = ModalRoute.of(context)!.settings.arguments as Map;
+    print(data);
+
+    return Scaffold(
+        body: SafeArea(
+      child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 120.0, 0, 0),
+          //),
+          child: Column(
+            children: <Widget>[
+              FlatButton.icon(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/location');
+                },
+                icon: Icon(Icons.edit_location),
+                label: Text('Edit location'),
+              ),
+              SizedBox(height: 20.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    data['location'],
+                    style: TextStyle(
+                      fontSize: 28.0,
+                      letterSpacing: 2.0,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 20.0),
+              Text(
+                data['time'],
+                style: TextStyle(
+                  fontSize: 66.0,
+                  //letterSpacing: 2.0,
+                ),
+              ),
+
+            ],
+          )),
+    ));
+  }
+}
+
+- pages/world_time.dart
+````Drat
+/* #32 - Loaders / Spinners */
+import 'package:http/http.dart';
+import 'dart:convert';
+import 'package:intl/intl.dart';
+
+class WorldTime {
+  String location = ""; // location name for the UI
+  String time = ""; // the time in that location
+  String flag = ""; // url to an asset flag icon
+  String url = ""; // location url for api endpoint
+
+  WorldTime(this.location, this.flag, this.url);
+
+  Future<void> getTime() async {
+    try {
+      // make the request
+      Response response =
+          await get('http://www.worldtimeapi.org/api/timezone/$url');
+      //Response response = await get('http://www.worldtimeapi.org/api/timezone/Asia/Kabul');
+      print('url : $url');
+      Map data = jsonDecode(response.body);
+      // print(data);
+
+      // get properties from data
+      String datetime = data['datetime'];
+      String offset = data['utc_offset'].substring(1, 3);
+      //print(datetime);
+      //print(offset);
+
+      // create DateTime object
+      DateTime now = DateTime.parse(datetime);
+      now = now.add(Duration(hours: int.parse(offset)));
+      // set the time property
+      //time = now.toString();
+      time = DateFormat.jm().format(now);
+    } catch (e) {
+      print('caught error: $e');
+      time = 'could not get the time data . . ';
+    }
+  } // end-getTime()
+} //End-of world_time {
+````
+
+- pages/pubspec.yaml
+````Yaml
+# #32 - Loaders / Spinners
+name: ninja_id
+description: A new Flutter project.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^0.12.0+2
+  intl: ^0.15.8
+  flutter_spinkit: "^3.1.0"
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^1.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+assets:
+  - assets/
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware.
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
+````

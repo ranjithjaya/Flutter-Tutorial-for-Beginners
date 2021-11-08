@@ -1,7 +1,8 @@
-/* #31 - Formatting & Showing Dates */
+/* #32 - Loaders / Spinners */
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import '../services/world_time.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loading extends StatefulWidget {
   const Loading({Key? key}) : super(key: key);
@@ -33,11 +34,22 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     // return Scaffold(body: Text('loading screen')
+
     return Scaffold(
+/*
       body: Padding(
         padding: EdgeInsets.all(50.0),
         child: Text('loading. . '),
       ),
+*/
+    backgroundColor: Colors.blue[900],
+    body: Center(
+        child: SpinKitFadingCube(
+          color: Colors.white,
+          size: 50.0,
+        )
+
+    ),
     );
   }
 }

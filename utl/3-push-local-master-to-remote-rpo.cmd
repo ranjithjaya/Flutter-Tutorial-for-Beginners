@@ -2,7 +2,7 @@ echo off
 rem ************** PARAMETERS BEGIN ********************
 set branch1=master
 set branch2=lesson-31
-set msg="#31 - Formatting & Showing Dates"
+set msg="#32 - Loaders / Spinners"
 rem To execute: .\utl\3-push-local-master-to-remote-rpo
 rem ************** PARAMETERS END ********************
 
